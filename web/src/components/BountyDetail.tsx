@@ -47,14 +47,25 @@ export function BountyDetail({
 
         <div className="grid grid-cols-2 gap-2 sm:grid-cols-2">
           <Stat label="Reward" value={formatReward(bounty.reward)} />
-          <Stat label="Submissions" value={bounty.submissionCount.toString()} />
+          <Stat label="Submissions" value={bounty.commitmentCount.toString()} />
           <Stat
-            label="Deadline"
+            label="Submit deadline"
             value={
               <span>
-                {formatTimestamp(bounty.deadline)}
+                {formatTimestamp(bounty.submissionDeadline)}
                 <span className="ml-1 text-xs text-zinc-500">
-                  ({formatRelative(bounty.deadline)})
+                  ({formatRelative(bounty.submissionDeadline)})
+                </span>
+              </span>
+            }
+          />
+          <Stat
+            label="Reveal deadline"
+            value={
+              <span>
+                {formatTimestamp(bounty.revealDeadline)}
+                <span className="ml-1 text-xs text-zinc-500">
+                  ({formatRelative(bounty.revealDeadline)})
                 </span>
               </span>
             }

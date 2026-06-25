@@ -1,5 +1,6 @@
 import hardhatToolboxViemPlugin from "@nomicfoundation/hardhat-toolbox-viem";
 import { configVariable, defineConfig } from "hardhat/config";
+import "dotenv/config";
 
 export default defineConfig({
   plugins: [hardhatToolboxViemPlugin],
@@ -7,10 +8,15 @@ export default defineConfig({
     profiles: {
       default: {
         version: "0.8.24",
+        settings: {
+          viaIR: true,
+          optimizer: { enabled: true, runs: 200 },
+        },
       },
       production: {
         version: "0.8.24",
         settings: {
+          viaIR: true,
           optimizer: {
             enabled: true,
             runs: 200,
@@ -38,8 +44,7 @@ export default defineConfig({
       type: "http",
       chainType: "l1",
       url: "https://rpc.ritualfoundation.org",
-      chainId: 1979,
-      accounts: [configVariable("DEPLOYER_PRIVATE_KEY")],
+      accounts: [configVariable("PRIVATE_KEY")],
     },
   },
 });
